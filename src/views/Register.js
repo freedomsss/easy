@@ -53,6 +53,19 @@ class Register extends Component {
 			</div>
 		);
 	}
+	register(data){
+		const urlStr = G.reverseHost + '/v1/pub/user/register';
+    doPostWithoutToken(urlStr, data).then((result) => {
+        const _status = requestStatus(result);
+        if (_status === 'success') {
+            console.log(result);
+        } else {
+            message.error(_status);
+        }
+    }, (err) => {
+        console.log(err);
+    });
+	}
 	nameChange(e){
 		this.setState({
 			name:e.target.value
@@ -90,6 +103,7 @@ class Register extends Component {
 			email:deleteSapce(this.state.email),
 		}
 		console.log(registerData);
+		this.register(registerData);
 	}
 }
 export default Register;

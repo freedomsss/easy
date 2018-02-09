@@ -192,3 +192,48 @@ body{
   	}
 	}
 }
+.article-item{
+	width: 800px;
+	min-height:112px;
+	margin:0 auto;
+	padding: 20px 0;
+	box-sizing: border-box;
+	border-top: 1px solid #fff;
+	.user-detail{
+		font-size: 12px;
+		color: #333;
+		margin-bottom: 14px;
+		.user-atavar{
+			width: 32px;
+			height: 32px;
+			border-radius: 100%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		span{
+			display: inline-block;
+			margin-left: 5px;
+			&:last-child{
+				color:#969696;
+			}
+		}
+	}
+	.content{
+		display: inline-block;
+		width: 80%;
+	}
+	.article-img{
+		display: inline-block;
+		vertical-align: middle;
+		width: 125px;
+		height: 100px;
+		border-radius: 3px;
+	}
+	.footer{
+		font-size: 12px;
+		color: #b4b4b4;
+		span{
+			margin-right: 15px;
+		}
+	}
+}
