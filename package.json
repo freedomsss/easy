@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "webpack-dev-server --hot --progress --config webpack.config.dev.js"
+    "dev": "webpack-dev-server --port 7100 --hot --history-api-fallback --progress --config webpack.config.dev.js"
   },
   "devDependencies": {
     "babel-loader": "^7.1.2",

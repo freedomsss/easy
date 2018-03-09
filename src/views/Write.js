@@ -6,17 +6,20 @@ class Write extends Component {
 	  this.state = {};
 	}
 	componentDidMount() {
-		this.init();
+		// this.init();
 	}
 	render() {
 		return (
-			<div>
+			<div className="write">
+				<div>
+					<span>文章标题：</span>
+					<input type="text"/>
+				</div>
+				<span>文章内容：</span>
 				<textarea id="editor"></textarea>
+				<div className="publish-btn">发布</div>
 			</div>
 		);
-	}
-	init() {
-
 	}
 }
 export default Write;

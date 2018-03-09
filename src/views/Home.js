@@ -5,7 +5,7 @@ import Article from '../components/Article';
 class Test extends Component {
 	render() {
 		return (
-			<div>
+			<div style={{marginTop: '68px'}}>
 				<Carousel/>
 				<div style={{height: '30px'}}></div>
 				<Article/>

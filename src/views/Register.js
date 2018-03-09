@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { doPostWithoutToken } from '../utils/asyncUtil';
 import { requestStatus } from '../utils/requestStatus';
 import { deleteSapce } from '../utils/commonFunc';
+import history from '../utils/history';
 class Register extends Component {
 	constructor(props) {
 	  super(props);
@@ -54,13 +55,14 @@ class Register extends Component {
 		);
 	}
 	register(data){
-		const urlStr = G.reverseHost + '/v1/pub/user/register';
+		const urlStr = G.reverseHost + '/v1/pub/users/register';
     doPostWithoutToken(urlStr, data).then((result) => {
         const _status = requestStatus(result);
         if (_status === 'success') {
             console.log(result);
+            history.push('/login')
         } else {
-            message.error(_status);
+            alert(_status);
         }
     }, (err) => {
         console.log(err);
@@ -102,7 +104,6 @@ class Register extends Component {
 			nickname:deleteSapce(this.state.name),
 			email:deleteSapce(this.state.email),
 		}
-		console.log(registerData);
 		this.register(registerData);
 	}
 }

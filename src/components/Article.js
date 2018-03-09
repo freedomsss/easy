@@ -17,6 +17,7 @@ class Article extends Component {
 					<span>浏览量：1</span>
 					<span>评论量：1</span>
 					<span>点赞量：1</span>
+					<span>评论</span>
 				</div>
 			</div>
 		);

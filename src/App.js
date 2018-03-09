@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  Router,
   Route,
-  Link
+  Link,
+  Switch,
+  NavLink
 } from 'react-router-dom';
 import history from './utils/history';
 import Home from './views/Home';
@@ -15,24 +18,43 @@ const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact, linkClass }) => (
       {
         // match ? '> ' : ''
       }
-      <Link to={to}>{label}</Link>
+      <NavLink to={to}>{label}</NavLink>
     </div>
   )}/>
 )
+const account = localStorage.getItem("account");
+const token = localStorage.getItem("token");
 const App = () => (
-  <Router>
+  <Router history={history}>
     <div>
-      <div className="common-menu">
-        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="首页"/>
-        <OldSchoolMenuLink to="/login" label="登录" linkClass="fl-right"/>
-        <OldSchoolMenuLink to="/register" label="注册" linkClass="fl-right"/>
-        <OldSchoolMenuLink to="/write" label="写文章" linkClass="fl-right"/>
+        <div className="common-menu">
+          <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="首页"/>
+          {
+            token ?
+            <label>
+              <div className="fl-right" onClick={
+                () => {
+                  localStorage.removeItem("account");
+                  localStorage.removeItem("token");
+                  window.location.href = '/';
+                  console.log(token);
+                }
+              }>登出</div>
+              <OldSchoolMenuLink to="/write" label="写文章" linkClass="fl-right"/>
+            </label> :
+            <label>
+              <OldSchoolMenuLink to="/login" label="登录" linkClass="fl-right"/>
+              <OldSchoolMenuLink to="/register" label="注册" linkClass="fl-right"/>
+            </label>
+          }
+        </div>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
+          <Route path="/write" component={Write}/>
+        </Switch>
       </div>
-      <Route exact path="/" component={Home}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/register" component={Register}/>
-      <Route path="/write" component={Write}/>
-    </div>
   </Router>
 );
 

@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
-    sources.push('webpack-dev-server/client?http://localhost:8080');
+    sources.push('webpack-dev-server/client?http://localhost:7100/');
     sources.push('webpack/hot/only-dev-server');
   }
 
@@ -19,10 +19,14 @@ module.exports = {
 	// 	path: __dirname, // 打包后文件存放的位置
 	// 	filename: 'dist/[name].js' // [name]的值是entry的键值，[hash]是打包时候的hash值，chunkhash是md5加密的值，这里是作为版本号使用。
 	// },
-	output: {
-    publicPath: 'http://localhost:8080/',
-    filename: 'dist/[name].js',
-  },
+	// output: {
+ //    publicPath: 'http://localhost:8080/',
+ //    filename: 'dist/[name].js',
+ //  },
+ output: {
+		path: __dirname,
+		filename: 'dist/[name].js'
+	},
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
@@ -68,10 +72,10 @@ module.exports = {
 			loader: 'url-loader?prefix=font/&limit=53248'
 		}]
 	},
-	// devServer: {
-	// 	host: '0.0.0.0',
-	// 	disableHostCheck: true
-	// }
+	devServer: {
+		host: '0.0.0.0',
+		disableHostCheck: true
+	}
 	 // devServer: {
   //   contentBase: "./dist",//本地服务器所加载的页面所在的目录
   //   historyApiFallback: true,//不跳转
