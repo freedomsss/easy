@@ -15,6 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "build": "NODE_ENV=production REVERSE_HOST=http://192.168.102.234:8082 webpack --config webpack.config.prot.js -p",
     "dev": "webpack-dev-server --port 7100 --hot --history-api-fallback --progress --config webpack.config.dev.js"
   },
   "devDependencies": {
